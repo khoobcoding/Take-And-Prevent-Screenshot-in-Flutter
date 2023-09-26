@@ -1,3 +1,29 @@
+dependencies:
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  screenshot: ^2.1.0  // Add this Package in your Pubspec.yaml  for screenshot
+  path_provider: ^2.1.1  // Add this Package in your Pubspec.yaml for saving screenshot
+
+// Add this Permission in your Android manifest.xml file
+    // Permission 1
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.searchingapp">
+
+  // Add these permission
+ <!-- Android 12 or below  -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
+    <!-- Android 13 or greater  -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+
+          // Permission 2
+ <application
+        android:label="Searching App" 
+        android:name="${applicationName}"
+        android:requestLegacyExternalStorage="true"  // Add this 
+
 import 'dart:io';
 import 'dart:math';
 import 'dart:typed_data';
@@ -55,9 +81,9 @@ class _ScreenshotAppState extends State<ScreenshotApp> {
                     onPressed: () async{
                      myscreenshot= await screenshotcontroller.capture();
                       savescreenshot(myscreenshot!);
-                    //  setState(() {
+                     setState(() {
                        
-                    //  });
+                     });
                     // screenshotcontroller.captureFromWidget(
                     //   Container(color: Colors.indigo,
                     //   width: 200,height: 200,
@@ -69,31 +95,31 @@ class _ScreenshotAppState extends State<ScreenshotApp> {
                         
                     //   });
                     // });
-                     final randomitemcount=Random().nextInt(99999);
-                     var mylongwidget=Builder(builder: (context) {
-                       return Container(
-                        padding: EdgeInsets.all(30),
-                        decoration: BoxDecoration(
-                          border: Border.all(color: Colors.indigo,width: 5),
-                          color: Colors.redAccent
-                        ),
-                        child: Column(mainAxisSize: MainAxisSize.min,
-                        children: [
-                          for(int i=0;i<10;i++)
-                          Text('Tile Index - ${randomitemcount+i}')
-                        ],),
-                       );
-                     },);
-                    screenshotcontroller.captureFromLongWidget(
-                      InheritedTheme.captureAll(context, 
-                      Material(child: mylongwidget,)),context: context
-                    ).then((value) {
-                      myscreenshot=value;
-                      setState(() {
+                    //  final randomitemcount=Random().nextInt(99999);
+                    //  var mylongwidget=Builder(builder: (context) {
+                    //    return Container(
+                    //     padding: EdgeInsets.all(30),
+                    //     decoration: BoxDecoration(
+                    //       border: Border.all(color: Colors.indigo,width: 5),
+                    //       color: Colors.redAccent
+                    //     ),
+                    //     child: Column(mainAxisSize: MainAxisSize.min,
+                    //     children: [
+                    //       for(int i=0;i<10;i++)
+                    //       Text('Tile Index - ${randomitemcount+i}')
+                    //     ],),
+                    //    );
+                    //  },);
+                    // screenshotcontroller.captureFromLongWidget(
+                    //   InheritedTheme.captureAll(context, 
+                    //   Material(child: mylongwidget,)),context: context
+                    // ).then((value) {
+                    //   myscreenshot=value;
+                    //   setState(() {
                         
-                      });
-                    });
-                    savescreenshot(myscreenshot!);
+                    //   });
+                    // });
+                    // savescreenshot(myscreenshot!);
                     },
                     child: const Text('Take Screenshot',
                         style: TextStyle(
