@@ -1,3 +1,9 @@
+dependencies:
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  no_screenshot: ^0.0.1+6  //  Add this Package in your Pubspec.yaml
+
 import 'package:flutter/material.dart';
 import 'package:no_screenshot/no_screenshot.dart';
 
