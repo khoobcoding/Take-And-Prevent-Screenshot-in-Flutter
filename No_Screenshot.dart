@@ -40,7 +40,6 @@ class _NoScreenshotAppState extends State<NoScreenshotApp>
 
   @override
   void dispose() {
-    noscreenshot.dispose();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
